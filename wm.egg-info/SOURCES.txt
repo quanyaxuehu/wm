@@ -9,8 +9,4 @@ wm.egg-info/entry_points.txt
 wm.egg-info/requires.txt
 wm.egg-info/top_level.txt
 wm/commands/__init__.py
-wm/commands/cmd_change.py
-wm/commands/cmd_change2.py
-wm/commands/cmd_init.py
-wm/commands/cmd_join.py
-wm/commands/cmd_status.py
+wm/commands/cmd_hello.py

@@ -45,15 +45,36 @@ class SdnadmCLI(click.MultiCommand):
     #     if cmd_name in set(list_commands):
     #         name = cmd_name
         #return name
-    def get_command(self, ctx, name):
-        try:
-            if sys.version_info[0] == 2:
-                name = name.encode('ascii', 'replace')
-            mod = __import__('wm.commands.cmd_' + name,
-                             None, None, ['cli'])
-        except ImportError:
-            return
-        return mod.cli
+
+    def get_command(self, ctx, cmd_name):
+        list_commands = self.list_commands(ctx)
+        if cmd_name in set(list_commands):
+            name = cmd_name
+            try:
+                if sys.version_info[0] == 2:
+                    name = name.encode('ascii', 'replace')
+                    # 将字符串处理成只有UTF-8字符
+                mod = __import__('wm.commands.cmd_' + name,
+                                 None, None, name)
+                method = getattr(mod, name)
+            except ImportError:
+                return
+            return method
+        else:
+            pass
+
+    # def get_command(self, ctx, name):
+    #     try:
+    #         if sys.version_info[0] == 2:
+    #             print(name)
+    #             name = name.encode('ascii', 'replace')
+    #             print(name)
+    #             #将字符串处理成只有UTF-8字符
+    #         mod = __import__('wm.commands.cmd_' + name,
+    #                          None, None, ['cli'])
+    #     except ImportError:
+    #         return
+    #     return mod.cli
 
 
 @click.command(cls=SdnadmCLI, context_settings=CONTEXT_SETTINGS)
