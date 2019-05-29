@@ -2,11 +2,9 @@ import pandas as pd
 from glob import glob
 import click
 
-
-@click.command()
+@click.command(short_help='File format conversion tool')
 @click.option('-i',default='txt',help='输入文件的类型',type = str)
 @click.option('-o',default='csv',help='输出文件的类型',type = str)
-
 def cli(i, o):
     if i == 'txt' and o == 'csv':
         files = glob('*.txt')
@@ -55,3 +53,6 @@ def cli(i, o):
 
     else:
         print('\nSorry, not supported \nPlease try:\n-----------\ntxt--to--csv/xlsx\ncsv--to--txt\nxlsx--to--csv/txt\n-----------\n')
+
+if __name__ =='__main__':
+    cli()

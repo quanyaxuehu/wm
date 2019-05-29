@@ -1,7 +1,7 @@
-# click-demo
+# wm
 
 ```
-$ cd click-demo
+$ cd wm
 $ python setup.py install
 $ clickctl
 Usage: clickctl [OPTIONS] COMMAND [ARGS]...

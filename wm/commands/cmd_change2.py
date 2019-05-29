@@ -2,12 +2,15 @@ import pandas as pd
 from glob import glob
 import click
 
-
-@click.command()
+##in this method: wm change2 change -i csv -o txt
+@click.group()
+def cli():
+    pass
+@click.command(short_help='File format conversion tool')
 @click.option('-i',default='txt',help='输入文件的类型',type = str)
 @click.option('-o',default='csv',help='输出文件的类型',type = str)
 
-def cli(i, o):
+def change(i, o):
     if i == 'txt' and o == 'csv':
         files = glob('*.txt')
         for file in files:
@@ -54,4 +57,9 @@ def cli(i, o):
         print('Successfully Finished')
 
     else:
-        print('Sorry, not supported \nPlease try:\n-----------\ntxt--to--csv/xlsx\ncsv--to--txt\nxlsx--to--csv/txt\n-----------\n')
+        print('\nSorry, not supported \nPlease try:\n-----------\ntxt--to--csv/xlsx\ncsv--to--txt\nxlsx--to--csv/txt\n-----------\n')
+
+cli.add_command(change)
+
+if __name__ =='__main__':
+    cli()
