@@ -4,9 +4,6 @@ import sys
 import click
 
 
-CONTEXT_SETTINGS = dict(auto_envvar_prefix='DEMO')
-
-
 class Context(object):
 
     def __init__(self):
@@ -53,7 +50,7 @@ class SdnadmCLI(click.MultiCommand):
             try:
                 if sys.version_info[0] == 2:
                     name = name.encode('ascii', 'replace')
-                    # 将字符串处理成只有UTF-8字符
+                    # 如果是python2,将字符串处理成只有UTF-8字符
                 mod = __import__('wm.commands.cmd_' + name,
                                  None, None, name)
                 method = getattr(mod, name)
@@ -63,21 +60,7 @@ class SdnadmCLI(click.MultiCommand):
         else:
             pass
 
-    # def get_command(self, ctx, name):
-    #     try:
-    #         if sys.version_info[0] == 2:
-    #             print(name)
-    #             name = name.encode('ascii', 'replace')
-    #             print(name)
-    #             #将字符串处理成只有UTF-8字符
-    #         mod = __import__('wm.commands.cmd_' + name,
-    #                          None, None, ['cli'])
-    #     except ImportError:
-    #         return
-    #     return mod.cli
-
-
-@click.command(cls=SdnadmCLI, context_settings=CONTEXT_SETTINGS)
+@click.command(cls=SdnadmCLI)
 @click.option('-v', '--verbose', is_flag=True,
               help='show debug message.')
 @pass_context
