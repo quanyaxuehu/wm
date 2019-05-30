@@ -1,4 +1,4 @@
 
         [console_scripts]
-        wm=wm.cli:cli
+        wm=wm.cli.cli:cli
     
