@@ -11,3 +11,6 @@ wm/cli/__init__.py
 wm/cli/cli.py
 wm/cli/commands/__init__.py
 wm/cli/commands/cmd_change.py
+wm/cli/commands/cmd_plot.py
+wm/plot/__init__.py
+wm/plot/plot_start.py
