@@ -14,7 +14,8 @@ def plot_start(x,y):
           + ggplot2.aes_string(x=x, y=y)
           + ggplot2.geom_point()
           + ggplot2.scale_colour_gradient(low="yellow", high="red")
-          + ggplot2.labs(title="mtcars", x='wt', y='mpg'))
+          # + ggplot2.labs(title="mtcars", x='wt', y='mpg')
+            )
     plot.save('point.png')
 if __name__ =='__main__':
     plot_start()
